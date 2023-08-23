@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-
+import axios from 'axios'
 
 export default function Inserir() {
+  
 
 
   return (

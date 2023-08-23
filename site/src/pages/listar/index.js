@@ -1,9 +1,17 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-
+import axios from 'axios'
+import { useState } from 'react';
 
 export default function Listar() {
+  const[listar,setListar] = useState([])
 
+  async function listarCtt(){
+    let url = 'http://localhost:5000/contato';
+    let resp = await axios.get(url)
+
+    setListar(resp.data)
+  }
 
   return (
     <div className='pagina-listar'>
@@ -25,22 +33,17 @@ export default function Listar() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
+            {listarCtt.map(item =>
+              <tr>
+              <td>{item.}</td>
               <td>Bruno O.</td>
               <td>11 99999-8889</td>
               <td>bruno@gmail.com</td>
               <td>Sim</td>
               <td>2023-10-01</td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Bruno O.</td>
-              <td>11 99999-8889</td>
-              <td>bruno@gmail.com</td>
-              <td>Sim</td>
-              <td>2023-10-01</td>
-            </tr>
+            )}
+           
           </tbody>
         </table>
 
